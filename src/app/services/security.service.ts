@@ -13,8 +13,8 @@ export class SecurityService {
 	) { }
 	
 
-	send2FACode(user: User): Observable<{session_id: string, code: number}> {
-		return this.http.post<{session_id: string, code: number}>(`${environment.url_ms_security}/api/public/security/login`, user)
+	send2FACode(user: User): Observable<{session_id: string, message: string}> {
+		return this.http.post<{session_id: string, message: string}>(`${environment.url_ms_security}/api/public/security/login`, user)
 	}
 
 	validate2FACode(code: String): Observable<{token: string}> {
@@ -22,5 +22,9 @@ export class SecurityService {
 			_id: sessionStorage.getItem("session_id"),
 			code: code
 		})
+	}
+
+	sendPasswordCode(user: User): Observable<{session_id: string, message: string}> {
+		return this.http.post<{session_id: string, message: string}>(`${environment.url_ms_security}/api/public/security/login`, user)
 	}
 }

@@ -4,7 +4,6 @@
       <div class="row justify-content-center">
         <div class="col-lg-5 col-md-6">
           <h1 class="text-white">Crear cuenta</h1>
-          <p class="text-lead text-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas molestiae cumque, obcaecati quis nihil tempore dolor aliquam? Voluptatem culpa fugit distinctio eaque quisquam, autem, iste commodi aspernatur qui, modi omnis.</p>
         </div>
       </div>
     </div>
@@ -25,40 +24,67 @@
           <div class="text-center text-muted mb-4">
             <small>Por favor, cuéntenos sobre usted</small>
           </div>
-          <form role="form">
+          <form role="form" [formGroup]="formGroup" (submit)="create()">
             <div class="form-group">
               <div class="input-group input-group-alternative mb-3">
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
                 </div>
-                <input class="form-control" placeholder="Nombre completo" type="text">
+                <input class="form-control" placeholder="Nombre" type="text" formControlName="name" [(ngModel)]="user.names">
+
               </div>
+			  <div class="text-muted font-italic" *ngIf="getFormGroup.name.errors && (getFormGroup.name.dirty || getFormGroup.name.touched)">
+			  	<small>
+					<span *ngIf="getFormGroup.name.errors.required" class="text-warning font-weight-700">
+						El nombre es obligatorio
+					</span>
+					<span *ngIf="getFormGroup.name.errors.maxlength" class="text-warning font-weight-700">
+						El nombre no puede ser de más de 100 caracteres
+					</span>
+			  	</small>
+			  </div>
             </div>
             <div class="form-group">
               <div class="input-group input-group-alternative mb-3">
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                 </div>
-                <input class="form-control" placeholder="Correo electrónico" type="email">
+                <input class="form-control" placeholder="Correo electrónico" type="email" formControlName="email" [(ngModel)]="user.email">
               </div>
+			  <div class="text-muted font-italic" *ngIf="getFormGroup.email.errors && (getFormGroup.email.dirty || getFormGroup.email.touched)">
+			  	<small>
+			  	<span *ngIf="getFormGroup.email.errors.required" class="text-warning font-weight-700">
+			  		El correo es obligatorio
+			  	</span>
+			  	<span *ngIf="getFormGroup.email.errors.email" class="text-warning font-weight-700">
+			  		El correo ingresado no es válido
+			  	</span>
+			  	</small>
+			  </div>
             </div>
             <div class="form-group">
               <div class="input-group input-group-alternative">
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                 </div>
-                <input class="form-control" placeholder="Contraseña" type="password">
+                <input class="form-control" placeholder="Contraseña" type="password" formControlName="password" [(ngModel)]="user.password" (input)="checkStrength()">
               </div>
             </div>
             <div class="text-muted font-italic">
-				<small>
-					Seguridad de la contraseña:
-					<span class="text-success font-weight-700">Fuerte</span>
-					<span class="text-warning font-weight-700">Media</span>
-					<span class="text-danger font-weight-700">Baja</span>
+				<small *ngIf="pwStrength > 0 && (getFormGroup.password.dirty || getFormGroup.password.touched)">
+					<div [ngSwitch]="pwStrength">
+						Seguridad de la contraseña:
+						<span *ngSwitchCase="3" class="text-success font-weight-700">Fuerte</span>
+						<span *ngSwitchCase="2" class="text-warning font-weight-700">Media</span>
+						<span *ngSwitchCase="1" class="text-danger font-weight-700">Baja</span>
+					</div>
 				</small>
+				<div *ngIf="pwStrength > 0 && pwStrength < 3 && (getFormGroup.password.dirty || getFormGroup.password.touched)">
+					<i class="ni ni-bulb-61 text-purple"></i>
+					<small class="text-purple">Una contraseña segura debe ser de mínimo 8 caracteres, e incluir al menos una mayúscula, una minúscula, un número y un caracter especial.</small>
+				</div>
 			</div>
-            <div class="row my-4">
+            <!-- <div class="row my-4">
               <div class="col-12">
                 <div class="custom-control custom-control-alternative custom-checkbox">
                   <input class="custom-control-input" id="customCheckRegister" type="checkbox">
@@ -67,9 +93,9 @@
                   </label>
                 </div>
               </div>
-            </div>
+            </div> -->
             <div class="text-center">
-              <button type="button" class="btn btn-neutral mt-4 text-purple">Crear cuenta</button>
+              <button type="submit" class="btn btn-neutral mt-4 text-purple">Crear cuenta</button>
             </div>
           </form>
         </div>

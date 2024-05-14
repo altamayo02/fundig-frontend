@@ -6,6 +6,7 @@ import { LandingComponent } from 'src/app/pages/landing/landing.component';
 import { AboutComponent } from 'src/app/pages/about/about.component';
 import { PasswordResetComponent } from 'src/app/pages/password-reset/password-reset.component';
 import { TwoFactorAuthComponent } from 'src/app/pages/two-factor-auth/two-factor-auth.component';
+import { PromptResetComponent } from 'src/app/pages/prompt-reset/prompt-reset.component';
 
 export const AuthLayoutRoutes: Routes = [
 	{
@@ -25,5 +26,9 @@ export const AuthLayoutRoutes: Routes = [
 	{
 		path: 'pw-reset',
 		component: PasswordResetComponent
+	},
+	{
+		path: 'prompt-reset',
+		component: PromptResetComponent
 	}
 ];

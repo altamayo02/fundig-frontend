@@ -24,12 +24,12 @@ export class UsersService {
 		return this.http.get<User>(`${environment.url_ms_business}/users/mongo/${id}`)
 	}
 	
-	create(theater: User): Observable<User> {
-		return this.http.post<User>(`${environment.url_ms_business}/users`, theater)
+	create(user: User): Observable<User> {
+		return this.http.post<User>(`${environment.url_ms_business}/users`, user)
 	}
 	
-	update(theater: User): Observable<User> {
-		return this.http.put<User>(`${environment.url_ms_business}/users/${theater.id}`, theater)
+	update(user: User): Observable<User> {
+		return this.http.put<User>(`${environment.url_ms_business}/users/${user.id}`, user)
 	}
 	
 	delete(id: number) {

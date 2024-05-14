@@ -18,6 +18,7 @@ import { PqrsComponent } from './pages/pqrs/pqrs.component';
 import { TwoFactorAuthComponent } from './pages/two-factor-auth/two-factor-auth.component';
 import { PasswordResetComponent } from './pages/password-reset/password-reset.component';
 import { ServicesComponent } from './pages/services/services.component';
+import { PromptResetComponent } from './pages/prompt-reset/prompt-reset.component';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { ServicesComponent } from './pages/services/services.component';
     TwoFactorAuthComponent,
     PasswordResetComponent,
     ServicesComponent,
+    PromptResetComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]
