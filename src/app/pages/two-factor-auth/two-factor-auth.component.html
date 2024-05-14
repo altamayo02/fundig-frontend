@@ -1,0 +1,58 @@
+<div class="header bg-gradient-purple py-7 py-lg-8">
+	<div class="container">
+	  <div class="header-body text-center mb-7">
+		<div class="row justify-content-center">
+		  <div class="col-lg-5 col-md-6">
+			<h1 class="text-white">Necesitamos confirmar su identidad</h1>
+		  </div>
+		</div>
+	  </div>
+	</div>
+	<div class="separator separator-bottom separator-skew zindex-100">
+	  <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+		<polygon class="fill-black" points="2560 0 2560 100 0 100"></polygon>
+	  </svg>
+	</div>
+  </div>
+  <!-- Page content -->
+  <div class="container mt--8 pb-5">
+	<div class="row justify-content-center">
+	  <div class="col-lg-5 col-md-7">
+		<div class="card bg-dark shadow border-0">
+		  <div class="card-body px-lg-5 py-lg-5">
+			<div class="text-center text-muted mb-4">
+			  <small>Por favor ingrese el código de seguridad enviado a su correo</small>
+			</div>
+			<form role="form">
+			  <div class="form-group mb-3">
+				<div class="input-group input-group-alternative">
+				  <div class="input-group-prepend">
+					<span class="input-group-text"><i class="ni ni-send"></i></span>
+				  </div>
+				  <input class="form-control text-purple" placeholder="Código de seguridad" type="text" [(ngModel)]="pin">
+				</div>
+			  </div>
+			  <div class="custom-control custom-control-alternative custom-checkbox">
+				<input class="custom-control-input" id=" customCheckLogin" type="checkbox">
+				<label class="custom-control-label" for=" customCheckLogin">
+				  <span class="text-muted">Recordarme en este dispositivo</span>
+				</label>
+			  </div>
+			  <div class="text-center">
+				<button type="button" class="btn btn-neutral my-4 text-purple" (click)="confirmTwoFA()">Continuar</button>
+			  </div>
+			</form>
+		  </div>
+		</div>
+		<div class="row mt-3">
+		  <div class="col-6">
+			<a routerLinkActive="active" [routerLink]="['/pw-reset']" class="text-light"><small>¿Olvidó su contraseña?</small></a>
+		  </div>
+		  <div class="col-6 text-right">
+			<a routerLinkActive="active" [routerLink]="['/register']" class="text-light"><small>Crear una cuenta</small></a>
+		  </div>
+		</div>
+	  </div>
+	</div>
+  </div>
+  
