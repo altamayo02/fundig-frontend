@@ -12,12 +12,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
-import { UserModel } from './models/user/user.model';
 import { LandingComponent } from './pages/landing/landing.component';
 import { AboutComponent } from './pages/about/about.component';
 import { PqrsComponent } from './pages/pqrs/pqrs.component';
 import { TwoFactorAuthComponent } from './pages/two-factor-auth/two-factor-auth.component';
 import { PasswordResetComponent } from './pages/password-reset/password-reset.component';
+import { ServicesComponent } from './pages/services/services.component';
 
 
 @NgModule({
@@ -34,12 +34,12 @@ import { PasswordResetComponent } from './pages/password-reset/password-reset.co
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
-    UserModel,
     LandingComponent,
     AboutComponent,
     PqrsComponent,
     TwoFactorAuthComponent,
-    PasswordResetComponent
+    PasswordResetComponent,
+    ServicesComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]

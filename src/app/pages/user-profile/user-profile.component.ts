@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { decodeJwt } from 'jose';
-import { UserModel } from 'src/app/models/user/user.model';
+import { User } from 'src/app/models/user.model';
 import { UsersService } from 'src/app/services/users.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { UsersService } from 'src/app/services/users.service';
   styleUrls: ['./user-profile.component.scss']
 })
 export class UserProfileComponent implements OnInit {
-  user: UserModel
+  user: User
 
   constructor(
 	private usersService: UsersService

@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { UserModel } from '../models/user/user.model';
+import { User } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class SecurityService {
 	) { }
 	
 
-	send2FACode(user: UserModel): Observable<{session_id: string, code: number}> {
+	send2FACode(user: User): Observable<{session_id: string, code: number}> {
 		return this.http.post<{session_id: string, code: number}>(`${environment.url_ms_security}/api/public/security/login`, user)
 	}
 
