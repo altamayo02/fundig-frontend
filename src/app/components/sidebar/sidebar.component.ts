@@ -13,8 +13,6 @@ export const ROUTES: RouteInfo[] = [
     { path: '/maps', title: 'Maps',  icon:'ni-pin-3 text-purple', class: '' },
     { path: '/user-profile', title: 'Perfil de usuario',  icon:'ni-single-02 text-purple', class: '' },
     { path: '/services', title: 'Servicios',  icon:'ni-bullet-list-67 text-purple', class: '' },
-    { path: '/login', title: 'Login',  icon:'ni-key-25 text-purple', class: '' },
-    { path: '/register', title: 'Register',  icon:'ni-circle-08 text-purple', class: '' }
 ];
 
 @Component({

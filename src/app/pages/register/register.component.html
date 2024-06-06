@@ -30,7 +30,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
                 </div>
-                <input class="form-control" placeholder="Nombre" type="text" formControlName="name" [(ngModel)]="user.names">
+                <input class="form-control" placeholder="Nombre" type="text" formControlName="name" [(ngModel)]="user.firstnames">
 
               </div>
 			  <div class="text-muted font-italic" *ngIf="getFormGroup.name.errors && (getFormGroup.name.dirty || getFormGroup.name.touched)">

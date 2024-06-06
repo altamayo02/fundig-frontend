@@ -1,0 +1,7 @@
+.edit-buttons {
+  opacity: 0;
+}
+
+.hoverable-entry:hover .edit-buttons {
+  opacity: 1;
+}

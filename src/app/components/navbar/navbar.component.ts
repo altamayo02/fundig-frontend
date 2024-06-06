@@ -2,6 +2,7 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 import { ROUTES } from '../sidebar/sidebar.component';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { Router } from '@angular/router';
+import { SecurityService } from 'src/app/services/security.service';
 
 @Component({
   selector: 'app-navbar',
@@ -12,7 +13,13 @@ export class NavbarComponent implements OnInit {
   public focus;
   public listTitles: any[];
   public location: Location;
-  constructor(location: Location,  private element: ElementRef, private router: Router) {
+
+  constructor(
+	  location: Location,
+    private element: ElementRef,
+    private router: Router,
+    private theSecurityService: SecurityService
+  ) {
     this.location = location;
   }
 
@@ -33,4 +40,7 @@ export class NavbarComponent implements OnInit {
     return 'Dashboard';
   }
 
+  getTheSecurityService() {
+    return this.theSecurityService
+  }
 }

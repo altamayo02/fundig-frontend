@@ -24,9 +24,14 @@ export class LoginComponent implements OnInit, OnDestroy {
 
 
 	twoFA() {
-		this.securityService.send2FACode(this.user).subscribe(response => {
-			sessionStorage.setItem("session_id", response.session_id)
-		})
+		this.securityService.send2FACode(this.user).subscribe({
+          next: response => {
+            localStorage.setItem("session_id", response.session_id)
+          },
+          error: err => {
+            console.log(err);
+          }
+        })
 		this.router.navigate(['2FA'])
 	}
 }

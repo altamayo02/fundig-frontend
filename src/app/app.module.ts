@@ -1,7 +1,7 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -17,8 +17,9 @@ import { AboutComponent } from './pages/about/about.component';
 import { PqrsComponent } from './pages/pqrs/pqrs.component';
 import { TwoFactorAuthComponent } from './pages/two-factor-auth/two-factor-auth.component';
 import { PasswordResetComponent } from './pages/password-reset/password-reset.component';
-import { ServicesComponent } from './pages/services/services.component';
 import { PromptResetComponent } from './pages/prompt-reset/prompt-reset.component';
+import { AuthGuard } from './guards/auth.guard';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 
 @NgModule({
@@ -35,15 +36,7 @@ import { PromptResetComponent } from './pages/prompt-reset/prompt-reset.componen
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
-    LandingComponent,
-    AboutComponent,
-    PqrsComponent,
-    TwoFactorAuthComponent,
-    PasswordResetComponent,
-    ServicesComponent,
-    PromptResetComponent,
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

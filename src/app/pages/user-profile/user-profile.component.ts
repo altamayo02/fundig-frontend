@@ -12,10 +12,10 @@ export class UserProfileComponent implements OnInit {
   user: User
 
   constructor(
-	private usersService: UsersService
+	private theUsersService: UsersService
   ) {
-	let userData: any = decodeJwt(sessionStorage.getItem("token"))
-	this.usersService.findByMongoId(userData._id).subscribe(user => {
+	let userData: any = decodeJwt(localStorage.getItem("token"))
+	this.theUsersService.findBySecurityId(userData._id).subscribe(user => {
 		this.user = user
 		console.log(this.user);
 	})

@@ -25,7 +25,7 @@ export class PasswordResetComponent implements OnInit {
   passwordReset() {
 	this.securityService.sendPasswordCode(this.user).subscribe({
 		next: response => {
-			sessionStorage.setItem("session_id", response.session_id)
+			localStorage.setItem("session_id", response.session_id)
 		},
 		error: err => {
 			console.log(err);
