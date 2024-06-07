@@ -15,12 +15,11 @@ export class UserProfileComponent implements OnInit {
 	private theUsersService: UsersService
   ) {
 	let userData: any = decodeJwt(localStorage.getItem("token"))
-	this.theUsersService.findBySecurityId(userData._id).subscribe(user => {
+	this.theUsersService.find(userData._id).subscribe(user => {
 		this.user = user
 		console.log(this.user);
 	})
   }
 
   ngOnInit() {}
-
 }

@@ -16,7 +16,7 @@ export class ListComponent implements OnInit {
     private theServicesService: ServicesService,
     private router: Router,
   ) {
-    this.headers = Object.keys(Service.prototype)
+    this.headers = Object.keys(new Service())
     this.services = []
   }
 
@@ -40,10 +40,12 @@ export class ListComponent implements OnInit {
   }
 
   update(id: number) {
-
+    this.router.navigate(['services/update/', id])
   }
 
-  delete(id: number) {
-
+  remove(id: number) {
+    this.theServicesService.delete(id).subscribe(() => {
+      this.router.navigate(['services/delete'])
+    })
   }
 }

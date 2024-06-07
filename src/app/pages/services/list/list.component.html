@@ -123,9 +123,21 @@
                   {{theCurrentService.cost}}
                 </td>
                 <td class="edit-buttons text-right">
-                  <button class="btn btn-primary" (click)="view(theCurrentService.id)"></button>
-                  <button class="btn btn-warning" (click)="view(theCurrentService.id)"></button>
-                  <button class="btn btn-danger" (click)="view(theCurrentService.id)"></button>
+                  <button class="btn btn-primary" (click)="view(theCurrentService.id)">
+                    <div>
+                      <i class="ni ni-active-40"></i>
+                    </div>
+                  </button>
+                  <button class="btn btn-warning" (click)="update(theCurrentService.id)">
+                    <div>
+                      <i class="ni ni-ruler-pencil"></i>
+                    </div>
+                  </button>
+                  <button class="btn btn-danger" (click)="remove(theCurrentService.id)">
+                    <div>
+                      <i class="ni ni-scissors"></i>
+                    </div>
+                  </button>
                 </td>
               </tr>
             </tbody>

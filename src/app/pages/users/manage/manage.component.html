@@ -1,1 +1,208 @@
-<p>manage works!</p>
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8"></div>
+<!-- Page content -->
+<div class="container-fluid mt--7">
+  <!-- Table -->
+  <div class="row">
+    <div class="col">
+      <div class="card shadow">
+        <div class="card-header bg-transparent">
+          <h3 class="mb-0" *ngIf="mode==0">Crear servicio</h3>
+          <h3 class="mb-0" *ngIf="mode==1">Ver servicio</h3>
+          <h3 class="mb-0" *ngIf="mode==2">Actualizar servicio</h3>
+        </div>
+        <div class="card-body">
+            <form class="form" [formGroup]="formGroup" (submit)="update(user._id)">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-4">
+                            ID:
+                        </div>
+                        <div class="col-8">
+                            {{user._id}}
+                        </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-4">
+                          Correo electrónico*:
+                      </div>
+                      <div class="col-8">
+                          {{mode == 1 ? user.email : ''}}
+                          <div *ngIf="mode != 1">
+                              <input type="text" class="form-control" [(ngModel)]="user.email" [disabled]="mode==1" formControlName="email" [value]="user.email">
+                              <div *ngIf="getFormGroup.email.errors && (getFormGroup.email.dirty || getFormGroup.email.touched || submitAttempted)">
+                                  <strong *ngIf="getFormGroup.email.errors.required" class="msnError">Requerido</strong>
+                                  <strong *ngIf="getFormGroup.email.errors.minlength" class="msnError">Mínimo 2 caracteres</strong>
+                              </div>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-4">
+                          Contraseña*:
+                      </div>
+                      <div class="col-8">
+                          {{mode == 1 ? user.password : ''}}
+                          <div *ngIf="mode != 1">
+                              <input type="text" class="form-control" [(ngModel)]="user.password" [disabled]="mode==1" formControlName="password">
+                              <div *ngIf="getFormGroup.password.errors && (getFormGroup.password.dirty || getFormGroup.password.touched || submitAttempted)">
+                                  <strong *ngIf="getFormGroup.password.errors.required" class="msnError">Requerido</strong>
+                                  <strong *ngIf="getFormGroup.password.errors.minlength" class="msnError">Mínimo 2 caracteres</strong>
+                              </div>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-4">
+                          Nombre de usuario:
+                      </div>
+                      <div class="col-8">
+                          {{mode == 1 ? user.name : ''}}
+                          <div *ngIf="mode != 1">
+                              <input type="text" class="form-control" [(ngModel)]="user.name" [disabled]="mode==1" formControlName="name">
+                              <div *ngIf="getFormGroup.name.errors && (getFormGroup.name.dirty || getFormGroup.name.touched || submitAttempted)">
+                                  <strong *ngIf="getFormGroup.name.errors.required" class="msnError">Requerido</strong>
+                                  <strong *ngIf="getFormGroup.name.errors.minlength" class="msnError">Mínimo 2 caracteres</strong>
+                              </div>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            Rol:
+                        </div>
+                        <div class="col-8">
+                            {{mode == 1 ? user.role : ''}}
+                            <div *ngIf="mode != 1">
+                              <select class="form-control" [(ngModel)]="user.role" formControlName="roleId">
+
+                              </select>
+                              <div *ngIf="getFormGroup.role.errors && (getFormGroup.role.dirty || getFormGroup.role.touched || submitAttempted)">
+                                  <strong *ngIf="getFormGroup.role.errors.required" class="msnError">Requerido</strong>
+                                  <strong *ngIf="getFormGroup.role.errors.minlength" class="msnError">Mínimo 2 caracteres</strong>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            Cédula de Ciudadanía:
+                        </div>
+                        <div class="col-8">
+                            {{mode == 1 ? user.cc : ''}}
+                            <div *ngIf="mode != 1">
+                                <input type="text" class="form-control" [(ngModel)]="user.cc" [disabled]="mode==1" formControlName="cc">
+                                <div *ngIf="getFormGroup.cc.errors && (getFormGroup.cc.dirty || getFormGroup.cc.touched || submitAttempted)">
+                                    <strong *ngIf="getFormGroup.cc.errors.required" class="msnError">Requerido</strong>
+                                    <strong *ngIf="getFormGroup.cc.errors.minlength" class="msnError">Mínimo 2 caracteres</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            Nombres:
+                        </div>
+                        <div class="col-8">
+                            {{mode == 1 ? user.firstnames : ''}}
+                            <div *ngIf="mode != 1">
+                              <input type="text" class="form-control" [(ngModel)]="user.firstnames" [disabled]="mode==1" formControlName="firstnames">
+                              <div *ngIf="getFormGroup.firstnames.errors && (getFormGroup.firstnames.dirty || getFormGroup.firstnames.touched || submitAttempted)">
+                                  <strong *ngIf="getFormGroup.firstnames.errors.required" class="msnError">Requerido</strong>
+                                  <strong *ngIf="getFormGroup.firstnames.errors.minlength" class="msnError">Mínimo 2 caracteres</strong>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            Apellidos:
+                        </div>
+                        <div class="col-8">
+                            {{mode == 1 ? user.lastnames : ''}}
+                            <div *ngIf="mode != 1">
+                              <input type="text" class="form-control" [(ngModel)]="user.lastnames" [disabled]="mode==1" formControlName="lastnames">
+                              <div *ngIf="getFormGroup.lastnames.errors && (getFormGroup.lastnames.dirty || getFormGroup.lastnames.touched || submitAttempted)">
+                                <strong *ngIf="getFormGroup.location.errors.required" class="msnError">Requerido</strong>
+                                <strong *ngIf="getFormGroup.lastnames.errors.min" class="msnError">Mínimo 1</strong>
+                                <strong *ngIf="getFormGroup.lastnames.errors.max" class="msnError">Mínimo 100</strong>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            País de residencia:
+                        </div>
+                        <div class="col-8">
+                            {{mode == 1 ? user.country : ''}}
+                            <div *ngIf="mode != 1">
+                              <input type="text" class="form-control" [(ngModel)]="user.country" [disabled]="mode==1" formControlName="country">
+                              <div *ngIf="getFormGroup.country.errors && (getFormGroup.country.dirty || getFormGroup.country.touched || submitAttempted)">
+                                <strong *ngIf="getFormGroup.location.errors.required" class="msnError">Requerido</strong>
+                                <strong *ngIf="getFormGroup.country.errors.min" class="msnError">Mínimo 1</strong>
+                                <strong *ngIf="getFormGroup.country.errors.max" class="msnError">Mínimo 100</strong>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            Ciudad de residencia:
+                        </div>
+                        <div class="col-8">
+                            {{mode == 1 ? user.city : ''}}
+                            <div *ngIf="mode != 1">
+                              <input type="text" class="form-control" [(ngModel)]="user.city" [disabled]="mode==1" formControlName="city">
+                              <div *ngIf="getFormGroup.city.errors && (getFormGroup.city.dirty || getFormGroup.city.touched || submitAttempted)">
+                                <strong *ngIf="getFormGroup.location.errors.required" class="msnError">Requerido</strong>
+                                <strong *ngIf="getFormGroup.city.errors.min" class="msnError">Mínimo 1</strong>
+                                <strong *ngIf="getFormGroup.city.errors.max" class="msnError">Mínimo 100</strong>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            Dirección de residencia:
+                        </div>
+                        <div class="col-8">
+                            {{mode == 1 ? user.address : ''}}
+                            <div *ngIf="mode != 1">
+                              <input type="text" class="form-control" [(ngModel)]="user.address" [disabled]="mode==1" formControlName="address">
+                              <div *ngIf="getFormGroup.address.errors && (getFormGroup.address.dirty || getFormGroup.address.touched || submitAttempted)">
+                                <strong *ngIf="getFormGroup.location.errors.required" class="msnError">Requerido</strong>
+                                <strong *ngIf="getFormGroup.address.errors.min" class="msnError">Mínimo 1</strong>
+                                <strong *ngIf="getFormGroup.address.errors.max" class="msnError">Mínimo 100</strong>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-4">
+                          Titular del usuario:
+                      </div>
+                      <div class="col-8">
+                          {{mode == 1 ? user.holder : ''}}
+                          <div *ngIf="mode != 1">
+                            <select class="form-control" [(ngModel)]="user.holder._id" formControlName="holderId">
+                              <option *ngFor="let user of users" [value]="user.holder._id">
+                                ID: {{user._id}},
+                                Nombre: {{user.name}}
+                              </option>
+                            </select>
+                            <div *ngIf="getFormGroup.holder.errors && (getFormGroup.holder.dirty || getFormGroup.holder.touched || submitAttempted)">
+                              <strong *ngIf="getFormGroup.location.errors.required" class="msnError">Requerido</strong>
+                              <strong *ngIf="getFormGroup.holder.errors.min" class="msnError">Mínimo 1</strong>
+                              <strong *ngIf="getFormGroup.holder.errors.max" class="msnError">Mínimo 100</strong>
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-neutral my-4 text-purple">Actualizar</button>
+			</form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

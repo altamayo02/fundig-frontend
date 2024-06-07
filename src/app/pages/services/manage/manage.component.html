@@ -1,1 +1,76 @@
-<p>manage works!</p>
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8"></div>
+<!-- Page content -->
+<div class="container-fluid mt--7">
+  <!-- Table -->
+  <div class="row">
+    <div class="col">
+      <div class="card shadow">
+        <div class="card-header bg-transparent">
+          <h3 class="mb-0" *ngIf="mode==0">Crear servicio</h3>
+          <h3 class="mb-0" *ngIf="mode==1">Ver servicio</h3>
+          <h3 class="mb-0" *ngIf="mode==2">Actualizar servicio</h3>
+        </div>
+        <div class="card-body">
+            <form class="form" [formGroup]="formGroup">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-4">
+                            ID:
+                        </div>
+                        <div class="col-8">
+                            {{service.id}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            Nombre:
+                        </div>
+                        <div class="col-8">
+                            {{mode == 1 ? service.name : ''}}
+                            <div *ngIf="mode != 1">
+                                <input type="text" class="form-control" [(ngModel)]="service.name" [disabled]="mode==1" formControlName="name">
+                                <div *ngIf="getFormGroup.name.errors && (getFormGroup.name.dirty || getFormGroup.name.touched || submitAttempted)">
+                                    <strong *ngIf="getFormGroup.name.errors.required" class="msnError">Requerido</strong>
+                                    <strong *ngIf="getFormGroup.name.errors.minlength" class="msnError">Mínimo 2 caracteres</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            Descripción:
+                        </div>
+                        <div class="col-8">
+                            {{mode == 1 ? service.description : ''}}
+                            <div *ngIf="mode != 1">
+                              <input type="text" class="form-control" [(ngModel)]="service.description" [disabled]="mode==1" formControlName="description">
+                              <div *ngIf="getFormGroup.description.errors && (getFormGroup.description.dirty || getFormGroup.description.touched || submitAttempted)">
+                                  <strong *ngIf="getFormGroup.description.errors.required" class="msnError">Requerido</strong>
+                                  <strong *ngIf="getFormGroup.description.errors.minlength" class="msnError">Mínimo 2 caracteres</strong>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            Costo:
+                        </div>
+                        <div class="col-8">
+                            {{mode == 1 ? service.cost : ''}}
+                            <div *ngIf="mode != 1">
+                              <input type="text" class="form-control" [(ngModel)]="service.cost" [disabled]="mode==1" formControlName="cost">
+                              <div *ngIf="getFormGroup.cost.errors && (getFormGroup.cost.dirty || getFormGroup.cost.touched || submitAttempted)">
+                                <strong *ngIf="getFormGroup.location.errors.required" class="msnError">Requerido</strong>
+                                <strong *ngIf="getFormGroup.cost.errors.min" class="msnError">Mínimo 1</strong>
+                                <strong *ngIf="getFormGroup.cost.errors.max" class="msnError">Mínimo 100</strong>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+			</form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

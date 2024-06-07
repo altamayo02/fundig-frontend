@@ -13,26 +13,22 @@ export class UsersService {
 	) { }
 	
 	list(): Observable<User[]> {
-		return this.http.get<User[]>(`${environment.url_ms_business}/users`)
+		return this.http.get<User[]>(`${environment.url_ms_security}/api/users`)
 	}
 	
 	find(id: number): Observable<User> {
-		return this.http.get<User>(`${environment.url_ms_business}/users/${id}`)
-	}
-	
-	findBySecurityId(id: string): Observable<User> {
-		return this.http.get<User>(`${environment.url_ms_business}/users/mongo/${id}`)
+		return this.http.get<User>(`${environment.url_ms_security}/api/users/${id}`)
 	}
 	
 	create(user: User): Observable<User> {
-		return this.http.post<User>(`${environment.url_ms_business}/users`, user)
+		return this.http.post<User>(`${environment.url_ms_security}/api/users`, user)
 	}
 	
 	update(user: User): Observable<User> {
-		return this.http.put<User>(`${environment.url_ms_business}/users/${user._id}`, user)
+		return this.http.put<User>(`${environment.url_ms_security}/api/users/${user._id}`, user)
 	}
 	
 	delete(id: number) {
-		return this.http.delete<User>(`${environment.url_ms_business}/users/${id}`)
+		return this.http.delete<User>(`${environment.url_ms_security}/api/users/${id}`)
 	}
 }

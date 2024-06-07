@@ -14,22 +14,22 @@ export class ServicesService {
   ) { }
 
   list(): Observable<Service[]> {
-    return this.http.get<Service[]>(`${environment.url_ms_business}/services`)
+    return this.http.get<Service[]>(`${environment.url_ms_business}/api/services`)
   }
 
-  view(id: number): Observable<Service> {
-    return this.http.get<Service>(`${environment.url_ms_business}/services/${id}`)
+  find(id: number): Observable<Service> {
+    return this.http.get<Service>(`${environment.url_ms_business}/api/services/${id}`)
   }
 
   create(service: Service): Observable<Service> {
-    return this.http.post<Service>(`${environment.url_ms_business}/services/`, service)
+    return this.http.post<Service>(`${environment.url_ms_business}/api/services/`, service)
   }
 
   update(service: Service): Observable<Service> {
-    return this.http.put<Service>(`${environment.url_ms_business}/services/${service.id}`, service)
+    return this.http.put<Service>(`${environment.url_ms_business}/api/services/${service.id}`, service)
   }
   
   delete(id: number) {
-    return this.http.delete<Service>(`${environment.url_ms_business}/services/${id}`)
+    return this.http.delete<Service>(`${environment.url_ms_business}/api/services/${id}`)
   }
 }
