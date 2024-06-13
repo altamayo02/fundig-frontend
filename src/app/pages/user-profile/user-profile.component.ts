@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { decodeJwt } from 'jose';
 import { User } from 'src/app/models/user.model';
-import { UsersService } from 'src/app/services/users.service';
+import { UsersService } from 'src/app/services/repositories/users.service';
 
 @Component({
   selector: 'app-user-profile',

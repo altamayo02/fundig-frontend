@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Service } from 'src/app/models/service.model';
-import { ServicesService } from 'src/app/services/services.service';
+import { ServicesService } from 'src/app/services/repositories/services.service';
 
 @Component({
   selector: 'app-list',

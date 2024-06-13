@@ -20,6 +20,7 @@ import { PasswordResetComponent } from './pages/password-reset/password-reset.co
 import { PromptResetComponent } from './pages/prompt-reset/prompt-reset.component';
 import { AuthGuard } from './guards/auth.guard';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { CameraModel } from './models/camera/camera.model';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
+    CameraModel,
   ],
   bootstrap: [AppComponent]
 })
